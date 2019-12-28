@@ -10,7 +10,7 @@ type Balance struct {
 }
 
 type BalanceResponse struct {
-	Success bool `json:"success"`
+	Success bool
 	Balance
 	Error string
 }
