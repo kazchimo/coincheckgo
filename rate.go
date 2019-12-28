@@ -7,7 +7,7 @@ type Rate struct {
 }
 
 type ShopRateResponse struct {
-	Rate string
+	Rate float64 `json:",string"`
 }
 
 func (r Rate) Shop(pair CurrencyPair) (ShopRateResponse, error) {

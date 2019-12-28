@@ -5,8 +5,8 @@ type Account struct {
 }
 
 type Balance struct {
-	JPY string
-	BTC string
+	JPY float64 `json:",string"`
+	BTC float64 `json:",string"`
 }
 
 type BalanceResponse struct {
