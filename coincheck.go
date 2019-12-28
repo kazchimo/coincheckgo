@@ -21,6 +21,7 @@ type CoinCheck struct {
 	Leverage    Leverage
 	Order       Order
 	OrderBook   OrderBook
+	Rate        Rate
 	Send        Send
 	Ticker      Ticker
 	Trade       Trade
@@ -38,6 +39,7 @@ func (c CoinCheck) NewClient(accessKey string, secretKey string) CoinCheck {
 	c.Leverage = Leverage{&c}
 	c.Order = Order{&c}
 	c.OrderBook = OrderBook{&c}
+	c.Rate = Rate{&c}
 	c.Send = Send{&c}
 	c.Ticker = Ticker{&c}
 	c.Trade = Trade{&c}
@@ -77,12 +79,12 @@ func (c CoinCheck) Request(method string, path string, param string) string {
 	return string(body)
 }
 
-//create nonce by milliseconds
+// create nonce by milliseconds
 func CreateNonce() int64 {
 	return time.Now().UnixNano() / (int64(time.Millisecond) / int64(time.Nanosecond))
 }
 
-//create signature
+// create signature
 func ComputeHmac256(message string, secret string) string {
 	key := []byte(secret)
 	h := hmac.New(sha256.New, key)
